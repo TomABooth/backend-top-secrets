@@ -17,9 +17,7 @@ const registerLogin = async (userProps = {}) => {
   const agent = request.agent(app);
   const user = await UserService.create({ ...testUser, ...userProps });
   const { email } = user;
-  await (
-    await agent.post('/api/v1/users/sessions')
-  ).setEncoding({ email, password });
+  await agent.post('/api/v1/users/sessions').send({ email, password });
   return [agent, user];
 };
 
@@ -40,10 +38,11 @@ describe('Top Secret Routes', () => {
   });
   it('returns current user', async () => {
     const [agent, user] = await registerLogin();
-    const me = await agent.get('/apu/v1/users/me');
+    const me = await agent.get('/api/v1/users/me');
 
     expect(me.body).toEqual({
       ...user,
+      id: expect.any(String),
       exp: expect.any(Number),
       iat: expect.any(Number),
     });

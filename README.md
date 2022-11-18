@@ -15,3 +15,5 @@ If you work on more than one feature at a time, you are guaranteed to multiply y
 | `npm run test:watch`   | continually watches and runs the tests when files are updated                       |
 | `npm run setup-db`     | sets up the database locally                                                        |
 | `npm run setup-heroku` | sets up the database on heroku                                                      |
+
+added secrets to github

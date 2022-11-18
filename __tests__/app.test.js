@@ -57,10 +57,10 @@ describe('Top Secret Routes', () => {
     });
   });
   it('should GET all secrets if a user is signed in', async () => {
-    const [agent] = await registerAndLogin();
+    const [agent] = await registerLogin();
     const res = await agent.get('/api/v1/secrets');
     expect(res.status).toBe(200);
-    expect(res.body).toMatchInlineSnapshot();
+    expect(res.body).toEqual([]);
   });
   afterAll(() => {
     pool.end();

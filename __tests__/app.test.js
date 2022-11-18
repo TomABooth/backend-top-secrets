@@ -20,7 +20,7 @@ describe('Top Secret Routes', () => {
     const { firstName, lastName, email } = testUser;
 
     expect(res.body).toEqual({
-      id: expect.any(string),
+      id: expect.any(String),
       firstName,
       lastName,
       email,

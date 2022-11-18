@@ -47,6 +47,15 @@ describe('Top Secret Routes', () => {
       iat: expect.any(Number),
     });
   });
+
+  it('DELETE should return 401 error', async () => {
+    const res = await request(app).get('/api/v1/users');
+
+    expect(res.body).toEqual({
+      message: 'You must be signed in to continue',
+      status: 401,
+    });
+  });
   afterAll(() => {
     pool.end();
   });
